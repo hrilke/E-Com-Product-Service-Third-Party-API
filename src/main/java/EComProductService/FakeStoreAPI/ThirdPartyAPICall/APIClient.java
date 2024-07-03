@@ -20,10 +20,27 @@ public class APIClient {
     private String fakeStoreBaseUrl;
     @Value("${fakestore.api.product.path}")
     private String fakeStoreAPIProductPath;
+    @Value(("${fakestore.api.category.path}"))
+    private String fakeStoreAPICategoryPath;
+
     public List<FakeStoreProductResponseDTO> getAllProducts() {
         String fakeStoreAllProductUrl = fakeStoreBaseUrl.concat(fakeStoreAPIProductPath);
         RestTemplate restTemplate = restTemplateBuilder.build();
         ResponseEntity<FakeStoreProductResponseDTO[]> productResponseDTOList = restTemplate.getForEntity(fakeStoreAllProductUrl, FakeStoreProductResponseDTO[].class);
+        return List.of(productResponseDTOList.getBody());
+    }
+
+    public FakeStoreProductResponseDTO getProductById(int productId) {
+        String fakeStoreProductByIdUrl = fakeStoreBaseUrl.concat(fakeStoreAPIProductPath).concat("/"+productId);
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        ResponseEntity<FakeStoreProductResponseDTO> productResponseDTO = restTemplate.getForEntity(fakeStoreProductByIdUrl,FakeStoreProductResponseDTO.class);
+        return productResponseDTO.getBody();
+    }
+
+    public List<FakeStoreProductResponseDTO> getProductsInCategory(String categoryName) {
+        String fakeStoreProductInCategoryUrl = fakeStoreBaseUrl.concat(fakeStoreAPIProductPath).concat(fakeStoreAPICategoryPath).concat("/" +categoryName);
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        ResponseEntity<FakeStoreProductResponseDTO[]> productResponseDTOList = restTemplate.getForEntity(fakeStoreProductInCategoryUrl, FakeStoreProductResponseDTO[].class);
         return List.of(productResponseDTOList.getBody());
     }
 }

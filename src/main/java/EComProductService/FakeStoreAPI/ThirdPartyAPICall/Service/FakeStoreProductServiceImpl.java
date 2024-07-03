@@ -20,8 +20,15 @@ public class FakeStoreProductServiceImpl implements ProductService{
     }
 
     @Override
+    public List<FakeStoreProductResponseDTO> getProductsInCategory(String categoryName) {
+        List<FakeStoreProductResponseDTO> fakeStoreProductsInCategory = apiClient.getProductsInCategory(categoryName);
+        return fakeStoreProductsInCategory;
+    }
+
+    @Override
     public FakeStoreProductResponseDTO getProduct(int productId) {
-        return null;
+        FakeStoreProductResponseDTO fakeStoreProduct = apiClient.getProductById(productId);
+        return fakeStoreProduct;
     }
 
     @Override

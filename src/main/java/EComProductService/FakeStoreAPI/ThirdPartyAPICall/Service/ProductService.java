@@ -9,8 +9,12 @@ import java.util.List;
 
 public interface ProductService {
     List<FakeStoreProductResponseDTO> getAllProducts();
+    List<FakeStoreProductResponseDTO> getProductsInCategory(String categoryName);
+
     FakeStoreProductResponseDTO getProduct(int productId);
     FakeStoreProductResponseDTO addProduct(Product product);
     FakeStoreProductResponseDTO updateProduct(Product product, int productId);
     boolean deleteProduct(int productId);
+
+
 }
