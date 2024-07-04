@@ -6,6 +6,7 @@
 - Optimized database operations for storage, updates, and deletions of product details.
 - Achieved 100% data consistency and improved system performance for E-commerce platforms.
 
+## 
 
 ### Real-World Use Cases
 1. **Inventory Management**:
@@ -20,6 +21,9 @@
 ### Diagram :
 
 ![Yet to Upload]()
+
+## Source 
+- **FakeStoreAPI** : https://fakestoreapi.com/docs
 
 ## Tech Stack
 
@@ -37,7 +41,7 @@
 
 ## Screenshots
 
-![Yet to Upload]()
+![Yet to Upload](https://github.com/hrilke/E-Com-Product-Service-Third-Party-API/blob/master/FakeStoreAPI%20SS.png)
 
 
 ## Learnings
