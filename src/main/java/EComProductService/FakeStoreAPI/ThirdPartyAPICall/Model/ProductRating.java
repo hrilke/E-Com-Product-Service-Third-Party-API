@@ -10,10 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Rating {
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-   private int id;
+public class ProductRating extends BaseEntity{
    private double rating;
    private int count;
 }

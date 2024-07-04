@@ -1,9 +1,9 @@
 package EComProductService.FakeStoreAPI.ThirdPartyAPICall.Repository;
 
-import EComProductService.FakeStoreAPI.ThirdPartyAPICall.Model.ProductRating;
+import EComProductService.FakeStoreAPI.ThirdPartyAPICall.Model.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RatingRepository extends JpaRepository<ProductRating, Integer> {
+public interface CartRepository extends JpaRepository<Cart,Integer> {
 }

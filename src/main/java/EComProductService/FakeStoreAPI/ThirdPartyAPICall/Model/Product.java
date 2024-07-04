@@ -10,9 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Product {
-    @Id
-    private int id;
+public class Product extends BaseEntity{
     private String title;
     private double price;
     @Column(columnDefinition = "TEXT")
@@ -20,7 +18,7 @@ public class Product {
     private String category;
     private String image;
     @ManyToOne
-    private Rating rating;
+    private ProductRating productRating;
 }
 
 /*

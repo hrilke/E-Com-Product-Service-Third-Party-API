@@ -1,7 +1,5 @@
-Implement all CRUD Methods for Product.
-- Add product
-- Update product
-- Delete product
-
+Implement All necessary DTOs with Conversion methods.
+Implement all CRUD Methods for Cart and User.
 Implement Cart Service, User Service and Login Service with all CRUD operations.
+
 

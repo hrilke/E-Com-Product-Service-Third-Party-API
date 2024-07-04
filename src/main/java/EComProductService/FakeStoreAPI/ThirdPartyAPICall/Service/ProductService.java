@@ -4,7 +4,7 @@ import EComProductService.FakeStoreAPI.ThirdPartyAPICall.APIClient;
 import EComProductService.FakeStoreAPI.ThirdPartyAPICall.DTO.FakeStoreProductResponseDTO;
 import EComProductService.FakeStoreAPI.ThirdPartyAPICall.DTO.FakeStoreRatingResponseDTO;
 import EComProductService.FakeStoreAPI.ThirdPartyAPICall.Model.Product;
-import EComProductService.FakeStoreAPI.ThirdPartyAPICall.Model.Rating;
+import EComProductService.FakeStoreAPI.ThirdPartyAPICall.Model.ProductRating;
 import EComProductService.FakeStoreAPI.ThirdPartyAPICall.Repository.ProductRepository;
 import EComProductService.FakeStoreAPI.ThirdPartyAPICall.Repository.RatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +26,9 @@ public class ProductService {
     public List<FakeStoreProductResponseDTO> getAllProducts() {
         List<FakeStoreProductResponseDTO> fakeStoreProducts = apiClient.getAllProducts();
         for (FakeStoreProductResponseDTO productDTO : fakeStoreProducts) {
-            Rating rating = FakeStoreRatingResponseDTO.from(productDTO.getRating());
-            ratingRepository.save(rating);
-            Product product = FakeStoreProductResponseDTO.from(productDTO, rating);
+            ProductRating productRating = FakeStoreRatingResponseDTO.from(productDTO.getRating());
+            ratingRepository.save(productRating);
+            Product product = FakeStoreProductResponseDTO.from(productDTO, productRating);
             productRepository.save(product);
         }
         return fakeStoreProducts;
@@ -47,17 +47,9 @@ public class ProductService {
     }
 
 
-    public FakeStoreProductResponseDTO addProduct(Product product) {
-        return null;
-    }
 
-
-    public FakeStoreProductResponseDTO updateProduct(Product product, int productId) {
-        return null;
-    }
-
-
-    public boolean deleteProduct(int productId) {
-        return false;
+    public List<FakeStoreProductResponseDTO> getProductSortedInDescOrder(String descOrder) {
+        List<FakeStoreProductResponseDTO> productList = apiClient.getSortedProductsInDescOrder(descOrder);
+        return productList;
     }
 }

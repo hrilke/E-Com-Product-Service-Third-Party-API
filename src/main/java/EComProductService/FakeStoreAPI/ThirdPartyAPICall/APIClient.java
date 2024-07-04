@@ -21,6 +21,9 @@ public class APIClient {
     @Value(("${fakestore.api.category.path}"))
     private String fakeStoreAPICategoryPath;
 
+    @Value("${fakestore.api.sort.request}")
+    private String fakeStoreSortRequest;
+
     public List<FakeStoreProductResponseDTO> getAllProducts() {
         String fakeStoreAllProductUrl = fakeStoreBaseUrl.concat(fakeStoreAPIProductPath);
         RestTemplate restTemplate = restTemplateBuilder.build();
@@ -37,6 +40,13 @@ public class APIClient {
 
     public List<FakeStoreProductResponseDTO> getProductsInCategory(String categoryName) {
         String fakeStoreProductInCategoryUrl = fakeStoreBaseUrl.concat(fakeStoreAPIProductPath).concat(fakeStoreAPICategoryPath).concat("/" +categoryName);
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        ResponseEntity<FakeStoreProductResponseDTO[]> productResponseDTOList = restTemplate.getForEntity(fakeStoreProductInCategoryUrl, FakeStoreProductResponseDTO[].class);
+        return List.of(productResponseDTOList.getBody());
+    }
+
+    public List<FakeStoreProductResponseDTO> getSortedProductsInDescOrder(String descOrder) {
+        String fakeStoreProductInCategoryUrl = fakeStoreBaseUrl.concat(fakeStoreAPIProductPath).concat(fakeStoreSortRequest).concat(descOrder);
         RestTemplate restTemplate = restTemplateBuilder.build();
         ResponseEntity<FakeStoreProductResponseDTO[]> productResponseDTOList = restTemplate.getForEntity(fakeStoreProductInCategoryUrl, FakeStoreProductResponseDTO[].class);
         return List.of(productResponseDTOList.getBody());
