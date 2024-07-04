@@ -1,8 +1,6 @@
 package EComProductService.FakeStoreAPI.ThirdPartyAPICall;
 
 import EComProductService.FakeStoreAPI.ThirdPartyAPICall.DTO.FakeStoreProductResponseDTO;
-import EComProductService.FakeStoreAPI.ThirdPartyAPICall.DTO.FakeStoreRatingResponseDTO;
-import EComProductService.FakeStoreAPI.ThirdPartyAPICall.DTO.ProductResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;

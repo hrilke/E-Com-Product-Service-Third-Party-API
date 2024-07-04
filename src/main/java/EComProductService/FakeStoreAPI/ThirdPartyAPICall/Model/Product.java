@@ -1,18 +1,26 @@
 package EComProductService.FakeStoreAPI.ThirdPartyAPICall.Model;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
+@Entity
 public class Product {
+    @Id
     private int id;
     private String title;
     private double price;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private String category;
     private String image;
-    private double rating;
+    @ManyToOne
+    private Rating rating;
 }
 
 /*
